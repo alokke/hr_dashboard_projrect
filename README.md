@@ -1,2 +1,3 @@
 # hr_dashboard_projrect
-FastAPI + SAP integration project with PDF generation
+FastAPI + SAP integration project for Probation Information
+
