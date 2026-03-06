@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+<h2>Employee Dashboard</h2>
+
+<div class="probation-section">
+    <h4>Probation Information</h4>
+
+    <p>
+        <strong>Employee ID:</strong>
+        <input type="text" id="emp_id">
+        <button onclick="loadProbation()">Check</button>
+    </p>
+
+    <p>
+        <strong>Status:</strong>
+        <span id="prob_status">Waiting...</span>
+    </p>
+
+    <p>
+        <strong>Confirmation Date:</strong>
+        <span id="confirm_date">Waiting...</span>
+    </p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    loadProbation();
+});
+
+function loadProbation() {
+
+    let empId = document.getElementById("emp_id").value;
+
+    fetch(`/probation/${empId}`)
+        .then(response => response.json())
+        .then(data => {
+
+            document.getElementById("prob_status").innerText =
+                data.probation_status || data.status || "Pending";
+
+            document.getElementById("confirm_date").innerText =
+                data.confirmation_date || "N/A";
+        })
+        .catch(() => {
+            document.getElementById("prob_status").innerText = "Server Error";
+        });
+}
+</script>
+
+</body>
+</html>
