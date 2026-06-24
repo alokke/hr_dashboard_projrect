@@ -55,4 +55,8 @@ def get_probation(emp_id: str):
     except Exception as e:
         return {"status": "Server Error"}
 
+<<<<<<< HEAD
 #alok784
+=======
+
+>>>>>>> 6054079d95be2cba32f8af5898a5ccfeac488180
